@@ -1,0 +1,115 @@
+OVERVIEW GERAL DOS MODELOS TREINADOS EM CSV
+
+Epoch 1/10 320/320 [==============================] - 175s 540ms/step - loss: 0.6563 - accuracy: 0.6078 - val_loss: 0.6252 - val_accuracy: 0.6530 
+Epoch 2/10 320/320 [==============================] - 95s 298ms/step - loss: 0.5842 - accuracy: 0.6942 - val_loss: 0.5738 - val_accuracy: 0.6984 
+Epoch 3/10 320/320 [==============================] - 96s 299ms/step - loss: 0.5468 - accuracy: 0.7286 - val_loss: 0.5500 - val_accuracy: 0.7199 
+Epoch 4/10 320/320 [==============================] - 88s 273ms/step - loss: 0.5129 - accuracy: 0.7502 - val_loss: 0.5344 - val_accuracy: 0.7321 
+Epoch 5/10 320/320 [==============================] - 82s 255ms/step - loss: 0.4835 - accuracy: 0.7693 - val_loss: 0.5468 - val_accuracy: 0.7259 
+Epoch 6/10 320/320 [==============================] - 351s 1s/step - loss: 0.4592 - accuracy: 0.7891 - val_loss: 0.5202 - val_accuracy: 0.7471 
+Epoch 7/10 320/320 [==============================] - 80s 249ms/step - loss: 0.4408 - accuracy: 0.7982 - val_loss: 0.4926 - val_accuracy: 0.7633 
+Epoch 8/10 320/320 [==============================] - 82s 256ms/step - loss: 0.4207 - accuracy: 0.8111 - val_loss: 0.5029 - val_accuracy: 0.7596 
+Epoch 9/10 320/320 [==============================] - 83s 260ms/step - loss: 0.4077 - accuracy: 0.8185 - val_loss: 0.4850 - val_accuracy: 0.7694 
+Epoch 10/10 320/320 [==============================] - 85s 264ms/step - loss: 0.3837 - accuracy: 0.8325 - val_loss: 0.5087 - val_accuracy: 0.7575
+
+
+modelo_original treinado e analisado baseado nas imagens do dataset enviado pela cromai
+
+Resumo geral do modelo treinado: 
+ 
+## total de epoch: 10
+tamanho do dataset: 320 batches por epoca
+atividade: classificaçao por acurracy(precisao)
+
+## desempenho do modelo:
+acuracia do treinamento (final): 83,25%
+acuracia de validação (final) : 75,75%
+melhor acuracia de validação: 76,94 % (epoch 9)
+
+
+## evolução do Loss
+Loss de treinamento (inicio - fim) 0.6563 => 0.3837
+Loss de validação (inicio - fim) 0.6252 => 0.5087
+
+a loss teve uma queda em visao geral, apresentando pequenas oscilações.
+
+## resultados de destaques:
+melhor epochs: acuracia de validação 76,94%
+loss de validação 0.4850
+
+
+###### MELHORIAS A SEREM REALIZADAS A SEGUIR:
+
+
+primeiro metodo de melhoria:
+alterando parâmetros convolucionais e layers do nosso modelo dobrando seu valor
+
+segundo metodo:
+incluir uma camada de Dropout e porque? Dropout desliga alguns parmetros na fase de treinamento para trazer um equilibro maior de decisao entre as imagens, com isso a tendencia é que ele acerte mais do que erre.
+
+terceiro metodo:
+tratamento de dados:
+incluirmos uma varivael com camadas adicionais para tratar as imagens com pequenas modificações como: rotação, zoom e direção. 
+aumentandoa a quantidade de imagem sem puxar novas imagens do dataset. apenas alterando o sentido da imagem o modelo será capaz de entender e aprender oque e gato e cachorro.
+
+quarto e ultimo metodo:
+usando metodo de transfer learning, oque seria isso?
+usando modelos disponiveis e ja treinados pelo tensorflow com milhares de parametros camadas e tendo um resultado melhor para validação das imagens, assim podeos ter uma maior taxa de acertiviade em nosso dataset.
+
+
+#######  RESULTADO
+
+
+modelo_melhorado treinado e analisado baseado nas imagens do dataset enviado pela cromai
+
+Epoch 1/10
+320/320 [==============================] - 160s 492ms/step - loss: 0.6943 - accuracy: 0.6756 - val_loss: 0.3113 - val_accuracy: 0.8655
+Epoch 2/10
+320/320 [==============================] - 150s 470ms/step - loss: 0.4543 - accuracy: 0.7935 - val_loss: 0.2519 - val_accuracy: 0.8911
+Epoch 3/10
+320/320 [==============================] - 151s 472ms/step - loss: 0.4112 - accuracy: 0.8173 - val_loss: 0.2271 - val_accuracy: 0.9014
+Epoch 4/10
+320/320 [==============================] - 164s 513ms/step - loss: 0.3886 - accuracy: 0.8294 - val_loss: 0.2123 - val_accuracy: 0.9088
+Epoch 5/10
+320/320 [==============================] - 153s 478ms/step - loss: 0.3713 - accuracy: 0.8367 - val_loss: 0.2031 - val_accuracy: 0.9127
+Epoch 6/10
+320/320 [==============================] - 152s 474ms/step - loss: 0.3579 - accuracy: 0.8453 - val_loss: 0.1965 - val_accuracy: 0.9148
+Epoch 7/10
+320/320 [==============================] - 151s 472ms/step - loss: 0.3373 - accuracy: 0.8487 - val_loss: 0.1927 - val_accuracy: 0.9177
+Epoch 8/10
+320/320 [==============================] - 163s 511ms/step - loss: 0.3412 - accuracy: 0.8516 - val_loss: 0.1860 - val_accuracy: 0.9207
+Epoch 9/10
+320/320 [==============================] - 146s 457ms/step - loss: 0.3368 - accuracy: 0.8517 - val_loss: 0.1826 - val_accuracy: 0.9219
+Epoch 10/10
+320/320 [==============================] - 154s 482ms/step - loss: 0.3313 - accuracy: 0.8527 - val_loss: 0.1777 - val_accuracy: 0.9250
+
+
+######   COMPARATIVO DE TREINAMENTO
+
+
+Métrica                   | Épocas | Modelo 1            | Modelo 2
+--------------------------|--------|---------------------|------------------
+Acurácia de Treinamento   | 10     | 83,25%              | 85,27%
+Acurácia de Validação     |        | 75,75%              | 92,50%
+Melhor Val Accuracy       |        | 76,94% (época 9)    | 92,50% (época 10)
+Loss de Treinamento final |        | 0.3837              | 0.3313
+Loss de Validação final   |        | 0.5087              | 0.1777
+
+Tendência de Overfitting |  | Leve oscilação nas últimas épocas | Muito estável
+
+Tempo por Época (média) |  | ~95s (exceto uma com 351s) | ~155s, mais consistente
+
+
+##### CONCLUSÕES 
+
+modelo_melhorado foi melhor do que o modelo_original em todas as metricas de desempenho
+
+
+acuracia de 77% pulou para 92%
+loss de validação caiu de 0.50 para 0.18, oque indica uma mellhor desempenho em visao geral
+
+estabilidade:
+modelo_original teve um Overfitting de baixo nivel
+modelo_melhorado teve ua redução continua e sauve desde a loss de validação ate a ultima epochs
+
+
+#### IMAGENS GRAFICAS ANEXADAS NESSA PASTA ####
